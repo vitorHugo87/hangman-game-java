@@ -3,6 +3,7 @@ package application;
 import java.util.Scanner;
 
 import entities.Word;
+import exceptions.GameException;
 import methods.GameMethods;
 import methods.WordMethods;
 
@@ -35,9 +36,19 @@ public class Program {
 		System.out.println();
 		
 		while(true) {
-			System.out.print("Type a letter: ");
-			char letter = sc.next().charAt(0);
-			progress = gameMethods.checkLetter(progress, letter, result.getWord());
+			try {
+				System.out.print("Type a letter: ");
+				char letter = sc.next().charAt(0);
+				progress = gameMethods.checkLetter(progress, letter, result.getWord());
+			}
+			catch(GameException e){
+				System.out.println(e.getMessage());
+				sc.nextLine();
+				sc.nextLine();
+			}
+			
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
 			
 			System.out.println(result.getTheme());
 			System.out.println(result.getWord());
