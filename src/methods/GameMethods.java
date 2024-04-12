@@ -18,6 +18,29 @@ public class GameMethods {
 		return vet;
 	}
 	
+	public char[] initializeTypedLetters(int length) {
+		char[] typedLetters = new char[length];
+		for(int i = 0; i < length; i++) {
+			typedLetters[i] = ' ';
+		}
+		return typedLetters;
+	}
+	
+	public char[] checkOccurrences(char[] typedLetters, char letter) {
+		for(int i = 0; i < typedLetters.length; i++) {
+			if(letter == typedLetters[i]) {
+				throw new GameException("Character already typed");
+			}
+		}
+		for(int i = 0; i < typedLetters[i]; i++) {
+			if(typedLetters[i] == ' ') {
+				typedLetters[i] = letter;
+				break;
+			}
+		}
+		return typedLetters;
+	}
+	
 	public char[] checkLetter(char[] progress, char letter, String word) {
 		if(letter < 'a' || letter > 'z') {
 			throw new GameException("Invalid Character! Valid characters: 'a-z'");
