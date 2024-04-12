@@ -5,6 +5,8 @@ import exceptions.GameException;
 
 public class GameMethods {
 
+	public int errors = 0;
+	
 	public char[] initializeProgress(Word result) {
 		char[] vet = new char[result.getWord().length()];
 		for(int i = 0; i < vet.length; i++) {
@@ -45,11 +47,25 @@ public class GameMethods {
 		if(letter < 'a' || letter > 'z') {
 			throw new GameException("Invalid Character! Valid characters: 'a-z'");
 		}
+		
+		boolean isError = true;
 		for(int i = 0; i < progress.length; i++) {
 			if(progress[i] == '_' && letter == Character.toLowerCase(word.charAt(i))) {
 				progress[i] = word.charAt(i);
+				isError = false;
 			}
 		}
+		
+		if(isError) errors++;
+		
 		return progress;
+	}
+	
+	public boolean checkGame(char[] progress, int errors) {
+		if(errors > 5) return false;
+		for(int i = 0; i < progress.length; i++) {
+			if(progress[i] == '_') return true;
+		}
+		return false;
 	}
 }

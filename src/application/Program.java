@@ -20,8 +20,8 @@ public class Program {
 		char[] progress = gameMethods.initializeProgress(result);
 		char[] typedLetters = gameMethods.initializeTypedLetters(26);
 		
-		while(true) {
-			UI.printGame(result, progress, typedLetters);
+		while(gameMethods.checkGame(progress, gameMethods.errors)) {
+			UI.printGame(result, progress, typedLetters, gameMethods.errors);
 			try {
 				System.out.print("Type a letter: ");
 				char letter = sc.next().charAt(0);
@@ -34,7 +34,9 @@ public class Program {
 				sc.nextLine();
 			}
 		}
+		
+		UI.printGame(result, progress, typedLetters, gameMethods.errors);
 			
-		//sc.close();
+		sc.close();
 	}
 }

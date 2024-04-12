@@ -4,7 +4,7 @@ import entities.Word;
 
 public class UI {
 
-	public static void printGame(Word word, char[] progress, char[] typedLetters) {
+	public static void printGame(Word word, char[] progress, char[] typedLetters, int errors) {
 		// Clear Screen
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
@@ -22,6 +22,8 @@ public class UI {
 		System.out.println("]");
 		
 		System.out.println(word.getWord());
+		
+		System.out.println(errors);
 		
 		// Progress
 		for(int i = 0; i < progress.length; i++) {
