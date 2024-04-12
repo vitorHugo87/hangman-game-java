@@ -36,7 +36,12 @@ public class Program {
 		}
 		
 		UI.printGame(result, progress, typedLetters, gameMethods.errors);
-			
+		if(gameMethods.errors > 5) {
+			System.out.println("DEAD! Correct answer: " + result.getWord());
+		}
+		else {
+			System.out.println("YOU WON!!!");
+		}
 		sc.close();
 	}
 }

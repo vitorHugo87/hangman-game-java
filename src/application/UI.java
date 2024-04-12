@@ -21,14 +21,84 @@ public class UI {
 		}
 		System.out.println("]");
 		
-		System.out.println(word.getWord());
-		
-		System.out.println(errors);
+		// Hangman
+		printHangman(errors);
 		
 		// Progress
 		for(int i = 0; i < progress.length; i++) {
 			System.out.print(progress[i] + " ");
 		}
 		System.out.println();
+	}
+	
+	public static void printHangman(int errors) {
+		switch(errors) {
+			case 0:
+				System.out.println("  +---+\n"
+					             + "  |   |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "============");
+				break;
+			case 1:
+				System.out.println("  +---+\n"
+					             + "  |   |\n"
+					             + "  O   |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "============");
+				break;
+			case 2:
+				System.out.println("  +---+\n"
+								 + "  |   |\n"
+					             + "  O   |\n"
+					             + "  |   |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "============");
+				break;
+			case 3:
+				System.out.println("  +---+\n"
+					             + "  |   |\n"
+					             + "  O   |\n"
+					             + " /|   |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "============");
+				break;
+			case 4:
+				System.out.println("  +---+\n"
+					             + "  |   |\n"
+					             + "  O   |\n"
+					             + " /|\\  |\n"
+					             + "      |\n"
+					             + "      |\n"
+					             + "============");
+				break;
+			case 5:
+				System.out.println("  +---+\n"
+					             + "  |   |\n"
+					             + "  O   |\n"
+					             + " /|\\  |\n"
+					             + " /    |\n"
+					             + "      |\n"
+					             + "============");
+				break;
+			case 6:
+				System.out.println("  +---+\n"
+					             + "  |   |\n"
+					             + "  O   |\n"
+					             + " /|\\  |\n"
+					             + " / \\  |\n"
+					             + "      |\n"
+					             + "============");
+				break;
+			default:
+				break;
+			
+		}
 	}
 }
