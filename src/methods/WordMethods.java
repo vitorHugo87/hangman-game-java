@@ -10,6 +10,10 @@ public class WordMethods {
 
 	public List<Word> words = new ArrayList<>();
 	
+	public WordMethods() {
+		initialSetup();
+	}
+	
 	public void initialSetup() {
 		words.add(new Word("Dog", "Animal"));
 		words.add(new Word("Zebra", "Animal"));
@@ -32,7 +36,7 @@ public class WordMethods {
 		words.add(new Word("France", "Country"));
 	}
 	
-	public Word drawnWord(List<Word> words) {
+	public Word drawnWord() {
 		Random random = new Random();
 		return words.get(random.nextInt(words.size()));
 	}

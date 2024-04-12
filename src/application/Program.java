@@ -15,27 +15,12 @@ public class Program {
 		
 		GameMethods gameMethods = new GameMethods();
 		WordMethods wordMethods = new WordMethods();
-		wordMethods.initialSetup();
-		Word result = wordMethods.drawnWord(wordMethods.words);
+		Word result = wordMethods.drawnWord();
 		
-		char[] progress = new char[result.getWord().length()];
-		for(int i = 0; i < progress.length; i++) {
-			if(result.getWord().charAt(i) != ' ') {
-				progress[i] = '_';
-			}
-			else {
-				progress[i] = ' ';
-			}
-		}
-		
-		System.out.println(result.getTheme());
-		System.out.println(result.getWord());
-		for(int i = 0; i < progress.length; i++) {
-			System.out.print(progress[i] + " ");
-		}
-		System.out.println();
+		char[] progress = gameMethods.initializeProgress(result);
 		
 		while(true) {
+			UI.printGame(result, progress);
 			try {
 				System.out.print("Type a letter: ");
 				char letter = sc.next().charAt(0);
@@ -46,16 +31,6 @@ public class Program {
 				sc.nextLine();
 				sc.nextLine();
 			}
-			
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
-			
-			System.out.println(result.getTheme());
-			System.out.println(result.getWord());
-			for(int i = 0; i < progress.length; i++) {
-				System.out.print(progress[i] + " ");
-			}
-			System.out.println();
 		}
 			
 		//sc.close();
